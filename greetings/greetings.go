@@ -15,6 +15,18 @@ func Hello(name string) (string, error) {
 	return message, nil
 }
 
+func Hellos() (map[string]string, error) {
+	messages := make(map[string]string)
+	for _, name := range randomPeople() {
+		message, err := Hello(name)
+		if err != nil {
+			return nil, err
+		}
+		messages[name] = message
+	}
+	return messages, nil
+}
+
 func init() {
 	rand.Seed(time.Now().UnixNano())
 }
@@ -29,7 +41,7 @@ func randomFormat() string {
 	return formats[rand.Intn(len(formats))]
 }
 
-func randomPeople() string {
+func randomPeople() []string {
 	var peopleStore []string = []string{
 		"Thai",
 		"Khanh",
@@ -38,5 +50,5 @@ func randomPeople() string {
 		"Thang",
 	}
 
-	return peopleStore[rand.Intn(len(peopleStore))]
+	return peopleStore
 }
