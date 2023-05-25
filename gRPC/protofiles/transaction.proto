@@ -1,0 +1,19 @@
+syntax = "proto3";
+package protofiles;
+option go_package = "./";
+
+//compile: protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative ./transaction.proto
+
+message TransactionRequest {
+    string from = 1;
+    string to = 2;
+    float amount = 3;
+}
+
+message TransactionResponse {
+    bool confirmation = 1;
+}
+
+service MoneyTransaction {
+    rpc MakeTransaction(TransactionRequest) returns (TransactionResponse);
+}
