@@ -23,7 +23,7 @@ func CreateIDCard(c *gin.Context) {
 	}
 
 	newIDCard := models.IDCard{
-		IDNumber: idCard.IDNUmber,
+		IDNumber: idCard.IDNumber,
 		Person:   models.Person{ID: idCard.PersonID},
 	}
 

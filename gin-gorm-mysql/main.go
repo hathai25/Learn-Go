@@ -39,5 +39,7 @@ func main() {
 
 	models.ConnectDataBase()
 
-	r.Run()
+	//run port 3001
+	r.Run(":3001")
+
 }
